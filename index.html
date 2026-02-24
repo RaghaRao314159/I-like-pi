@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raghavendra Narayan Rao</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #222222;
+    --accent: #c8f560;
+    --accent2: #60b4f5;
+    --text: #e8e8e0;
+    --muted: #666660;
+    --dim: #333330;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px 48px;
+    border-right: 1px solid var(--border);
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 2.5vw, 36px);
+    color: var(--muted);
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+  }
+  .hero-desc {
+    color: #999990;
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0a;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: #d9ff70; }
+  .btn-outline { color: var(--text); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .stat-cell {
+    background: var(--bg);
+    padding: 32px 24px;
+    transition: background 0.2s;
+  }
+  .stat-cell:hover { background: var(--surface); }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .edu-block {
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+  .edu-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .edu-block p { color: var(--muted); font-size: 12px; }
+  .edu-highlight {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    background: rgba(200, 245, 96, 0.1);
+    border: 1px solid rgba(200, 245, 96, 0.25);
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    border-top: 1px solid var(--border);
+    padding: 96px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+  .section-num {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+  .exp-meta { padding-top: 4px; }
+  .exp-year {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .exp-company {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .exp-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .exp-desc { color: #888880; line-height: 1.75; max-width: 580px; }
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .tag {
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .tag-accent {
+    border-color: rgba(200,245,96,0.3);
+    color: var(--accent);
+    background: rgba(200,245,96,0.05);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--bg);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project-card:hover { background: var(--surface); }
+  .project-card:hover .project-arrow { opacity: 1; transform: translate(2px,-2px); }
+  .project-num {
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    flex: 1;
+  }
+  .project-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .project-arrow {
+    font-size: 18px;
+    color: var(--accent);
+    opacity: 0;
+    transition: all 0.2s;
+  }
+
+  /* ── MORE PROJECTS ── */
+  .more-projects {
+    margin-top: 1px;
+    background: var(--border);
+  }
+  .more-projects-inner {
+    background: var(--bg);
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .more-projects-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .more-projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .more-projects-list .tag {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .more-projects-list .tag:not(.tag-accent) {
+    color: var(--text);
+  }
+
+  /* ── RESEARCH ── */
+  .research-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .research-item {
+    background: var(--bg);
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .research-item:hover { background: var(--surface); }
+  .research-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .research-desc { color: var(--muted); font-size: 12px; line-height: 1.7; max-width: 560px; }
+  .research-year {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+  .research-venue {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 10px;
+    font-size: 11px;
+    border: 1px solid rgba(96, 180, 245, 0.3);
+    color: var(--accent2);
+    background: rgba(96, 180, 245, 0.05);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .skill-group {
+    background: var(--bg);
+    padding: 32px 24px;
+    transition: background 0.2s;
+  }
+  .skill-group:hover { background: var(--surface); }
+  .skill-group-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-items { display: flex; flex-direction: column; gap: 6px; }
+  .skill-item { font-size: 12px; color: #888880; }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .ach-item {
+    background: var(--bg);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: background 0.2s;
+  }
+  .ach-item:hover { background: var(--surface); }
+  .ach-medal {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--accent);
+    min-width: 40px;
+    line-height: 1;
+  }
+  .ach-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .ach-detail { font-size: 11px; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    padding: 120px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .contact-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .contact-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    letter-spacing: -2px;
+    margin-bottom: 48px;
+    line-height: 1.05;
+  }
+  .contact-heading em { font-style: italic; color: var(--muted); }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--dim);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .achievements-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    nav { padding: 16px 24px; }
+    section { padding: 64px 24px; }
+  }
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .research-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ── CURSOR DOT ── */
+  .cursor {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RNR</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#fun">Fun</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Cambridge Engineering · ML Researcher · Builder</div>
+    <h1 class="hero-name">Raghavendra<br><em>Narayan Rao</em></h1>
+    <p class="hero-sub">AI Researcher & Engineer</p>
+    <p class="hero-desc">
+      Cambridge Engineering student (Top 4th percentile) building at the frontier of reinforcement learning, NLP, and agentic AI systems. Published researcher. Internship track at Sqwish, HDB Singapore, and Playfair.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:rn436@cam.ac.uk" class="btn btn-primary">Get in touch →</a>
+      <a href="https://github.com/RaghaRao314159" class="btn btn-outline" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/ragha-rao/" class="btn btn-outline" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">15<sup style="font-size:24px">th</sup></div>
+        <div class="stat-label">Year 2 Rank / 322</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Published Papers</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">AI Projects</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4×</div>
+        <div class="stat-label">Hackathon Prizes</div>
+      </div>
+    </div>
+    <div class="edu-block">
+      <h3>Engineering Tripos — Cambridge University</h3>
+      <p>Maths / Physics / Engineering · 2021–present</p>
+      <span class="edu-highlight">Heaviside Prize × 2 · Topped Maths & Electrical Papers</span>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-year">2025</div>
+        <div class="exp-company">Sqwish · UK</div>
+      </div>
+      <div>
+        <div class="exp-title">AI Researcher (Part-time)</div>
+        <p class="exp-desc">Designed a new architecture for contextual bandits on continuous action spaces — an optimisation layer that sits between the user and an LLM, compressing and routing queries more efficiently.</p>
+        <div class="exp-tags">
+          <span class="tag tag-accent">Contextual Bandits</span>
+          <span class="tag tag-accent">Continuous Action Spaces</span>
+          <span class="tag">PyTorch</span><span class="tag">RL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-year">2025</div>
+        <div class="exp-company">Sqwish · UK</div>
+      </div>
+      <div>
+        <div class="exp-title">AI Research Intern</div>
+        <p class="exp-desc">Three parallel workstreams: (1) GRPO/ORPO summarisation training with synthetic datasets — see <a href="https://hackmd.io/@7w5r_wikRj2YWDdeIBHy3g/rymnXoaaxl" target="_blank" style="color:var(--accent2);">blog post</a>, (2) improving Microsoft's LLMLingua-2 with RL alignment — boosting LongBench from 50% → 60%, (3) building a synthetic customer support testbench for warm-starting RL models.</p>
+        <div class="exp-tags">
+          <span class="tag tag-accent">GRPO</span><span class="tag tag-accent">ORPO</span>
+          <span class="tag">LLMLingua</span><span class="tag">Synthetic Data</span><span class="tag">LLM-as-Judge</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-year">2024</div>
+        <div class="exp-company">HDB · Singapore</div>
+      </div>
+      <div>
+        <div class="exp-title">Data Scientist — AI Centre of Excellence</div>
+        <p class="exp-desc">Solo full-stack build of a government-grade RAG chatbot for auditing — custom pipeline with ChromaDB, containerised storage, and a React frontend. Wrote an <a href="https://github.com/RaghaRao314159/AuditBot_backend/tree/main/tutorial" target="_blank" style="color:var(--accent2);">internal tutorial series on RAG</a> adopted by the team.</p>
+        <div class="exp-tags">
+          <span class="tag tag-accent">RAG</span><span class="tag">LangChain</span>
+          <span class="tag">ChromaDB</span><span class="tag">React</span><span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-year">2023</div>
+        <div class="exp-company">Playfair</div>
+      </div>
+      <div>
+        <div class="exp-title">Lead ML Engineer</div>
+        <p class="exp-desc">Led a team of 5 to build a custom Regional-CNN model detecting, bounding, and classifying arrows in financial charts. Outperformed Meta's Segment Anything Model in accuracy on this domain.</p>
+        <div class="exp-tags">
+          <span class="tag tag-accent">R-CNN</span><span class="tag">Computer Vision</span>
+          <span class="tag">PyTorch</span><span class="tag">Team Lead</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/AuditBot_backend" target="_blank">
+      <div class="project-num">001</div>
+      <div class="project-title">AuditBot — Full-stack RAG Chatbot</div>
+      <p class="project-desc">Custom RAG pipeline with recursive retrieval, semantic chunking (outperformed AWS Bedrock), Elastic + Chroma persistence, and reciprocal rank fusion retrieval.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">LangChain</span><span class="tag">Elastic</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://drive.google.com/file/d/1deT7FR_H6U1xXy9i29yzRr53SbDD_E1h/view?usp=sharing" target="_blank">
+      <div class="project-num">002</div>
+      <div class="project-title">Peitho — Agentic Publicity Suite</div>
+      <p class="project-desc">RL agent that posts on social media, learns from real engagement feedback daily using GRPO. Custom PyTorch reward model trained alongside the agent. Under YC review — see demo.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag tag-accent">GRPO</span><span class="tag">RL</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/RL-with-Synthetic-dataset" target="_blank">
+      <div class="project-num">003</div>
+      <div class="project-title">GRPO vs ORPO Benchmark</div>
+      <p class="project-desc">Hypothesis-driven study: created a synthetic summarisation dataset and tested whether ORPO's steering power outperforms GRPO. Benchmarks confirmed ORPO wins.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">ORPO</span><span class="tag">GRPO</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/animationGenerator" target="_blank">
+      <div class="project-num">004</div>
+      <div class="project-title">Animation Generator (RL + LLM)</div>
+      <p class="project-desc">RL-trained model that translates user text specs into tailored SVG vector animations — reframing the problem as code translation that LLMs handle naturally.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag tag-accent">RL</span><span class="tag">Code Translation</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="http://hydraited.pythonanywhere.com" target="_blank">
+      <div class="project-num">005</div>
+      <div class="project-title">Project HydraIted</div>
+      <p class="project-desc">AI-assisted water quality tracker for rural communities. Uses random forests for interpretability. Won Homerton Changemakers prize + Lovely Naha Foundation prize.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">Random Forests</span><span class="tag">Social Impact</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/AI_Alignment" target="_blank">
+      <div class="project-num">006</div>
+      <div class="project-title">Attention Heads for AI Alignment</div>
+      <p class="project-desc">Used Neel Nanda's TransformerLens to build attention head detectors and interpret a toy transformer — contributing to mechanistic interpretability research.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">TransformerLens</span><span class="tag">Interp</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/GF2_logic_simulator/tree/main" target="_blank">
+      <div class="project-num">007</div>
+      <div class="project-title">Custom Hardware Language + Compiler</div>
+      <p class="project-desc">Built a hardware programming language from scratch — scanner, parser, compiler, and GUI for logic simulation interaction.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">VHDL</span><span class="tag">Compilers</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/RaghaRao314159/Pendulum-Balancing-AI" target="_blank">
+      <div class="project-num">008</div>
+      <div class="project-title">Balancing Pendulum (JAX)</div>
+      <p class="project-desc">Trained a cartpole balancing agent using RL in JAX. Clean implementation exploring JAX's JIT-compiled gradient paradigm for fast policy optimisation.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">JAX</span><span class="tag">RL</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://convo-ui.vercel.app" target="_blank">
+      <div class="project-num">009</div>
+      <div class="project-title">Convo UI — Open-source Chat UI</div>
+      <p class="project-desc">A React/TypeScript chatbot UI built to fill gaps in TurboGPT and Openchat UI — supports markdown tables, multi-conversation storage, and streaming with custom backends.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">React</span><span class="tag">TypeScript</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="more-projects">
+    <div class="more-projects-inner">
+      <div class="more-projects-title">More Projects</div>
+      <div class="more-projects-list">
+        <a href="https://github.com/RaghaRao314159/Snake_AI" target="_blank" class="tag tag-accent">Snake AI (Deep Q) ↗</a>
+        <a href="https://github.com/RaghaRao314159/Machine-Deep-Learning/tree/main/RNN" target="_blank" class="tag tag-accent">Stock Prediction (LSTM) ↗</a>
+        <a href="https://github.com/RaghaRao314159/Machine-Deep-Learning/tree/main/CNN" target="_blank" class="tag tag-accent">Image Recognition (CNN) ↗</a>
+        <a href="https://github.com/RaghaRao314159/Machine-Deep-Learning/tree/main/ANN" target="_blank" class="tag tag-accent">Diabetes Prediction (ANN) ↗</a>
+        <a href="https://github.com/RaghaRao314159/Cryptography-treasure-hunt" target="_blank" class="tag">Cryptography Treasure Hunt ↗</a>
+        <a href="https://github.com/RaghaRao314159/Symbolic_Derivative_Calculator" target="_blank" class="tag">Derivative Calculator ↗</a>
+        <a href="https://github.com/RaghaRao314159/InnovAItio/tree/main" target="_blank" class="tag">InnovAItio ↗</a>
+        <a href="https://github.com/RaghaRao314159/Access_AI" target="_blank" class="tag">Access AI ↗</a>
+        <a href="https://github.com/RaghaRao314159/Gif_suggestion_AI" target="_blank" class="tag">PixelCrafters ↗</a>
+        <a href="https://github.com/RaghaRao314159/Metro-MRT-Map-" target="_blank" class="tag">Metro MRT Repo ↗</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Research</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="research-list">
+
+    <div class="research-item fade-up">
+      <div>
+        <div class="research-title">Context Rearrangement in LLMs</div>
+        <p class="research-desc">Investigating the exchangeability penalty gap (EPG) of LLMs — quantifying performance loss when context order varies, and defining criteria for truly exchangeable models.</p>
+        <span class="research-venue">Cambridge · 2025</span>
+      </div>
+      <div class="research-year">2025</div>
+    </div>
+
+    <a class="research-item fade-up" href="https://doi.org/10.48550/arXiv.2409.04913" target="_blank" style="text-decoration:none;color:inherit;">
+      <div>
+        <div class="research-title">NGD Converges to Less Degenerate Solutions than SGD</div>
+        <p class="research-desc">Experimental verification of Singular Learning Theory: neural networks trained with Natural Gradient Descent consistently achieve higher effective dimension than SGD-trained counterparts.</p>
+        <span class="research-venue">arXiv · 2024 · Read Abstract ↗</span>
+      </div>
+      <div class="research-year">2024</div>
+    </a>
+
+    <a class="research-item fade-up" href="https://publi.math.unideb.hu/paper/2379" target="_blank" style="text-decoration:none;color:inherit;">
+      <div>
+        <div class="research-title">A Functional Bound for Young's Cosine Polynomial II</div>
+        <p class="research-desc">Optimised solution to a 100-year-old open problem in mathematics — Young's Cosine Inequality.</p>
+        <span class="research-venue" style="border-color:rgba(200,245,96,0.3);color:var(--accent);background:rgba(200,245,96,0.05);">PUBLICATIONS MATHEMATICAE · DOI: 10.5486/PMD.2020.8719 · Read Abstract ↗</span>
+      </div>
+      <div class="research-year">2020</div>
+    </a>
+
+    <a class="research-item fade-up" href="https://www.researchgate.net/publication/343229694_Collection_of_Infinite_Series_for_p" target="_blank" style="text-decoration:none;color:inherit;">
+      <div>
+        <div class="research-title">Collection of Infinite Series for π</div>
+        <p class="research-desc">A collection of infinite series converging to π via convergence acceleration — infinitely many members converge faster than the Ramanujan–Sato series.</p>
+        <span class="research-venue">ResearchGate · 2019 · Read Full Paper ↗</span>
+      </div>
+      <div class="research-year">2019</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">ML / RL</div>
+      <div class="skill-items">
+        <div class="skill-item">PyTorch · JAX · TensorFlow</div>
+        <div class="skill-item">Unsloth · trl · Keras</div>
+        <div class="skill-item">GRPO · ORPO · DPO</div>
+        <div class="skill-item">Deep Q-Learning</div>
+        <div class="skill-item">Contextual Bandits</div>
+        <div class="skill-item">Multi-armed Bandits</div>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">NLP / Vision</div>
+      <div class="skill-items">
+        <div class="skill-item">Transformers · BERT</div>
+        <div class="skill-item">Matryoshka Embeddings</div>
+        <div class="skill-item">LSTM · RNN · ARIMA</div>
+        <div class="skill-item">R-CNN · CLIP</div>
+        <div class="skill-item">Stable Diffusion</div>
+        <div class="skill-item">SIFT · OpenCV</div>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">Engineering</div>
+      <div class="skill-items">
+        <div class="skill-item">Python · Java · C++</div>
+        <div class="skill-item">OCaml · Scala · Rust</div>
+        <div class="skill-item">VHDL · Verilog</div>
+        <div class="skill-item">SQL · Chroma · Elastic</div>
+        <div class="skill-item">PySpark · Polars · Pandas</div>
+        <div class="skill-item">LangChain · LlamaIndex</div>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">Web / Infra</div>
+      <div class="skill-items">
+        <div class="skill-item">React · Next.js</div>
+        <div class="skill-item">TypeScript · Flask</div>
+        <div class="skill-item">Docker · ChromaDB</div>
+        <div class="skill-item">Electron · NodeGui</div>
+        <div class="skill-item">LangServe</div>
+        <div class="skill-item">HTML · JavaScript</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Awards</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="achievements-grid">
+    <div class="ach-item fade-up"><div class="ach-medal">①</div><div><div class="ach-name">Heaviside Prize (×2)</div><div class="ach-detail">Topped Maths & Electrical Papers · Cambridge 2024</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">①</div><div><div class="ach-name">CUES Hackathon</div><div class="ach-detail">1st Place · Cambridge 2023</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">②</div><div><div class="ach-name">Bidwells Hackathon</div><div class="ach-detail">2nd Place · 2025</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">②</div><div><div class="ach-name">Cam Hack</div><div class="ach-detail">2nd Place · 2024</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">🥇</div><div><div class="ach-name">SE Asian Math Olympiad</div><div class="ach-detail">Gold × 2 · 2017 & 2018</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">🏆</div><div><div class="ach-name">International Student Science Fair</div><div class="ach-detail">Best in Mathematics · 2019</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">🏆</div><div><div class="ach-name">Singapore Int'l Science Challenge</div><div class="ach-detail">Best Engineer · 2019</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">①</div><div><div class="ach-name">Singapore Math Project Festival</div><div class="ach-detail">1st & Gold · 2018</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">🎓</div><div><div class="ach-name">Full Scholarship · Cambridge</div><div class="ach-detail">2021</div></div></div>
+    <div class="ach-item fade-up"><div class="ach-medal">🎓</div><div><div class="ach-name">Best in Mathematics & Physics</div><div class="ach-detail">NUS High School · 2019</div></div></div>
+  </div>
+</section>
+
+<!-- FUN -->
+<section id="fun">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Fun</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+    <a class="project-card fade-up" href="https://hungry-yonath-1abd66.netlify.app" target="_blank">
+      <div class="project-num">001</div>
+      <div class="project-title">Metro Route Finder</div>
+      <p class="project-desc">Interactive web app for finding optimal routes across metro/MRT networks. Built with graph algorithms and a clean visual interface for exploring transit connections.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">Graph Algorithms</span><span class="tag">JavaScript</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://donkey-type-blush.vercel.app" target="_blank">
+      <div class="project-num">002</div>
+      <div class="project-title">Donkey Type</div>
+      <p class="project-desc">A typing speed test app — track your WPM, accuracy, and improve your typing with a clean, distraction-free interface.</p>
+      <div class="project-footer">
+        <div class="exp-tags"><span class="tag">Web App</span><span class="tag">JavaScript</span></div>
+        <span class="project-arrow">↗</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <p class="contact-eyebrow">Let's work together</p>
+  <h2 class="contact-heading">Got something<br><em>interesting?</em></h2>
+  <div class="contact-links">
+    <a href="mailto:rn436@cam.ac.uk" class="btn btn-primary">rn436@cam.ac.uk →</a>
+    <a href="https://www.linkedin.com/in/ragha-rao/" class="btn btn-outline" target="_blank">LinkedIn</a>
+    <a href="https://github.com/RaghaRao314159" class="btn btn-outline" target="_blank">GitHub</a>
+    <a href="tel:+447514218986" class="btn btn-outline">+44 7514 218986</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Raghavendra Narayan Rao</span>
+  <span>Cambridge University · rn436@cam.ac.uk</span>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80 * (Array.from(entry.target.parentElement.children).indexOf(entry.target)));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
